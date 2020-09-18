@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function updatePosts() {
 
-    fetch("http://192.168.0.7:3000/api/all").then(res => {
+    fetch("http://localhost:3000/api/all").then(res => {
         return res.json();
     }).then(json => {
 
@@ -43,7 +43,7 @@ function newPost() {
                      body: JSON.stringify(post)
     };
 
-    fetch("http://192.168.0.7:3000/api/new", options).then(res => {
+    fetch("http://localhost:3000/api/new", options).then(res => {
         updatePosts();
         document.getElementById("title").value = "";
         document.getElementById("desc").value = "";
@@ -62,7 +62,7 @@ function deletePost(e) {
                      body: JSON.stringify(post)
     };
 
-    fetch("http://192.168.0.7:3000/api/del", options).then(res => {
+    fetch("http://localhost:3000/api/del", options).then(res => {
         updatePosts();
     })
 }
