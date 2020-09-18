@@ -1,11 +1,12 @@
 module.exports = {
 
     posts: [
-        {
-            id: "laknscik",
-            title: "Teste do Mural de Avisos",
-            description: "Descrição do teste"
-        },
+        //Modelo de Post
+        // {
+        //     id: "laknscik",
+        //     title: "Teste do Mural de Avisos",
+        //     description: "Descrição do teste"
+        // },
     ],
 
     getAll() {
@@ -14,6 +15,14 @@ module.exports = {
 
     newPost( title, description) {
         this.posts.push({ id: generateId(), title, description });
+    },
+
+    deletePost(id) {
+        this.posts = this.posts.filter((post) => {
+            if(post.id !== id) {
+                return post;
+            }
+            })
     },
 }
 

@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+input{
+    padding: 5px;
+}
+
+#desc{
+    width: 600px;
+}
+
+button{
+    padding: 5px;
+    color: white;
+    background-color: rgb(19, 173, 19);
+    border-radius: 5px;
+}
+
+button:hover{
+    background-color: rgb(8, 153, 8);
+}
+
+.bg-gray{
+    background-color: rgb(233, 233, 233);
+}
+
+@media screen and (max-width:758px){
+
+    #desc{
+        margin-top: 10px;
+        width: 212px;
+    }
+}

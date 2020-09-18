@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function updatePosts() {
 
-    fetch("http://localhost:3000/api/all").then(res => {
+    fetch("http://192.168.0.7:3000/api/all").then(res => {
         return res.json();
     }).then(json => {
 
@@ -15,10 +15,11 @@ function updatePosts() {
         posts.forEach((post) => {
             let postElement = 
             `<div id=${post.id} class="card mb-4">
-                <div class="card-header">
-                    <h5 class="card-title"> ${post.title} </h5>
+                <div class="card-header bg-info">
+                    <div class="close text-white" onClick="deletePost(this)">X</div>
+                    <h5 class="card-title text-white"> ${post.title} </h5>
                 </div>
-                <div class="card-body">
+                <div class="card-body bg-gray">
                     <div class="card-text"> ${post.description} </div>
                 </div>
             </div>`;
@@ -42,10 +43,26 @@ function newPost() {
                      body: JSON.stringify(post)
     };
 
-    fetch("http://localhost:3000/api/new", options).then(res => {
+    fetch("http://192.168.0.7:3000/api/new", options).then(res => {
         updatePosts();
         document.getElementById("title").value = "";
         document.getElementById("desc").value = "";
     })
 
+}
+
+function deletePost(e) {
+
+    let id = e.closest('[id]').id;
+
+    let post = { id };
+
+    const options = {method: "DELETE",
+                     headers: new Headers({'content-type': 'application/json'}),
+                     body: JSON.stringify(post)
+    };
+
+    fetch("http://192.168.0.7:3000/api/del", options).then(res => {
+        updatePosts();
+    })
 }
